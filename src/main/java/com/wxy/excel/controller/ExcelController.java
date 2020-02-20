@@ -5,7 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.soap.SAAJResult;
+
 /**
  * @Author: 王鑫垚
  * @Description:
@@ -30,5 +35,14 @@ public class ExcelController {
             model.addAttribute("Message", "上传失败");
         }
         return "upload";
+    }
+    @GetMapping("/export")
+    public void exportExcel(HttpServletResponse response) {
+        try {
+            excelService.exportExcel(response);
+            System.out.println("导出成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

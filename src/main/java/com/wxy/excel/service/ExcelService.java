@@ -1,6 +1,11 @@
 package com.wxy.excel.service;
 
+import com.wxy.excel.entity.Excel;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * @Author: 王鑫垚
@@ -10,4 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface ExcelService {
 
     boolean getExcel(MultipartFile file) throws Exception;
+
+    void exportExcel(HttpServletResponse response) throws IOException;
 }
